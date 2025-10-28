@@ -119,17 +119,6 @@ textarea {
   /* 1 */
 }
 
-/*body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #3b2f2f;
-  background-color: #d1e0e0;
-}
-*/
-
 body {
   display: flex;
   flex-direction: column;
@@ -142,8 +131,6 @@ body {
 main {
   flex: 1;
 }
-
-
 
 .weather-box {
   background: white;
@@ -208,7 +195,7 @@ footer {
   font-size: 0.8rem;
   color: #333;
   background-color: #b3d9d9;
-  padding: 12px 0;
+  padding: 15px 0;
   padding-bottom: 50px;
   margin: 0;
 }
