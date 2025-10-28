@@ -119,7 +119,7 @@ textarea {
   /* 1 */
 }
 
-body {
+/*body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -128,6 +128,21 @@ body {
   color: #3b2f2f;
   background-color: #d1e0e0;
 }
+*/
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d1e0e0;
+}
+
+main {
+  flex: 1;
+}
+
 
 
 .weather-box {
@@ -138,9 +153,6 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   margin: 16px auto;
 }
-
-
-
 
 main.content {
   flex: 1;
@@ -189,138 +201,140 @@ button.clicked {
 }
 
 footer {
-   text-align: center;
-   font-size: 0.8rem;
-   color: #DCDCDC;
-   padding: 15px 0;
-   background-color: #999;
-   width: 100%;
-   position: sticky;
-   bottom: 0;
- }
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #333;
+  background-color: #b3d9d9;
+  padding: 12px 0;
+  padding-bottom: 50px;
   margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
+  /* Extends the .visually-hidden class to allow the element
+  * to be focusable when navigated to via the keyboard:
+  * https://www.drupal.org/node/897638
+  */
 
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
+  .visually-hidden.focusable:active,
+  .visually-hidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
   }
 
   /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
+   * Hide visually and from screen readers, but maintain layout
    */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  /*
+   * Clearfix: contain floats
+   *
+   * The use of `table` rather than `block` is only necessary if using
+   * `::before` to contain the top-margins of child elements.
+   */
+
+  .clearfix::before,
+  .clearfix::after {
     content: "";
+    display: table;
   }
 
-  pre {
-    white-space: pre-wrap !important;
+  .clearfix::after {
+    clear: both;
   }
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
+  /* ==========================================================================
+     EXAMPLE Media Queries for Responsive Design.
+     These examples override the primary ('mobile first') styles.
+     Modify as content requires.
+     ========================================================================== */
+
+  @media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
   }
 
-  tr,
-  img {
-    page-break-inside: avoid;
+  @media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
   }
 
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
+  /* ==========================================================================
+     Print styles.
+     Inlined to avoid the additional HTTP request:
+     https://www.phpied.com/delay-loading-your-print-css/
+     ========================================================================== */
 
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
+  @media print {
+    *,
+    *::before,
+    *::after {
+      background: #fff !important;
+      color: #000 !important;
+      /* Black prints faster */
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
 
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+
+    a[href]::after {
+      content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+      content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+      content: "";
+    }
+
+    pre {
+      white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+  }
+{}

@@ -1,14 +1,14 @@
-let result;
+/*let result;
 //await fetch("https://openweathermap.org/api")
 //await fetch("https://openweathermap.org/weather-assistant?apikey") //={API key}
 await fetch("https://api.openweathermap.org/data/2.5/weather?q=")
-{city name},{country code}&appid={API key}
+{city name},{country,code}&appid={API key}
   .then(res => res.json())
-  .then(data => result = city weather)
+  .then(data => result = city,weather)
 for(let i = 0; i < result.name; i++){
   console.log(result[i]);
 }
-
+*/
 
 
 /*
@@ -36,4 +36,28 @@ for(let i = 0; i < result.name; i++){
 </current>
 */
 
-const API_KEY = "YOUR_REAL_API_KEY_HERE";
+//const API_KEY = "YOUR_REAL_API_KEY_HERE";
+
+
+const API_KEY = "YOUR_REAL_API_KEY_HERE"; // replace this with your actual key
+
+async function getWeather(city, country) {
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${API_KEY}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("City not found or API error");
+    }
+
+    const data = await response.json();
+    console.log("City:", data.name);
+    console.log("Temperature:", data.main.temp, "°C");
+    console.log("Weather:", data.weather[0].description);
+  } catch (error) {
+    console.error("Error fetching weather:", error);
+  }
+}
+
+// Example: call the function
+getWeather("Stockholm", "SE");
