@@ -1,52 +1,147 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!--<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weather Widget</title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather in 3 Cities</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { text-align: center; }
+    .weather-box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin: 16px auto;
+    }
+  </style>
 </head>
-
-
 <body>
-<main class="content">
-  <h1>Weather Widget</h1>
-  <p>Where do you want to see the weather?
-    Click the button and see if you should go on your trip or not.</p>
 
+  <h1>Weather in 3 Cities</h1>
+  <div id="weatherContainer"></div>
 
-  <div id="wrapperDiv"></div>
-  <button id="myButton">Click here</button><br><br>
+  <script>
+    const API_KEY = "https://api.openweathermap.org/data/2.5/weather?q="; // Replace with your OpenWeather API key
+    const cities = [
+      { name: "Stockholm", country: "SE" },
+      { name: "London", country: "GB" },
+      { name: "Bangkok", country: "TH" }
+    ];
 
-  <div class="wrapper"></div>
+    async function getWeather(city, country) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${API_KEY}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch weather");
+      return response.json();
+    }
 
-  <div id="wrapperDiv2"></div>
-  <img src="img/krabi.jpg" style="height:400px;" alt="Image of three women under a black sky on a beach in Krabi"/>
-</main>
+    async function showWeather() {
+      const container = document.getElementById("weatherContainer");
+      container.innerHTML = "";
 
-<footer>
-  <p>© 2025 made by @littlemissmilla</p>
-</footer>
+      for (const {name, country} of cities) {
+        try {
+          const data = await getWeather(name, country);
+          const temp = Math.round(data.main.temp);
+          const desc = data.weather[0].description;
 
-  <!-- This is my site, made from HTML5 Boilerplate
-  <p>Hello world! This is HTML5 Boilerplate.</p>-->
-  <script src="js/app.js"></script>
-
+          const cityBox = document.createElement("div");
+          cityBox.className = "weather-box";
+          cityBox.innerHTML = `
+            <h3>${data.name}, ${data.sys.country}</h3>
+            <p>${temp}°C — ${desc}</p>
+          `;
+          container.appendChild(cityBox);
+        } catch (err) {
+          console.error(err);
+          const errorBox = document.createElement("div");
+          errorBox.className = "weather-box";
+          errorBox.innerHTML = `<h3>${name}, ${country}</h3><p>Could not load weather data.</p>`;
+          container.appendChild(errorBox)
+        }
+      }
+    }
+    showWeather();
+    </script>
 </body>
-
 </html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    input, button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    .weather-box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>What about tomorrow? 🌤️</h1>
+<p>Type a city and see the weather:</p>
+
+<input type="text" id="cityInput" placeholder="Enter city name">
+<button id="checkWeather">Get Weather</button>
+
+<div id="weatherContainer"></div>
+
+<script>
+  const API_KEY = "bf911426b3cfa77b46355221ff33da01"; // 🔑 Replace with your OpenWeather API key
+
+  document.getElementById("checkWeather").addEventListener("click", async () => {
+    const city = document.getElementById("cityInput").value.trim();
+    const container = document.getElementById("weatherContainer");
+    if (!city) {
+      container.innerHTML = "<p>Please enter a city.</p>";
+      return;
+    }
+
+    container.innerHTML = "<p>Loading...</p>";
+
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("City not found");
+      const data = await response.json();
+
+      const temp = Math.round(data.main.temp);
+      const desc = data.weather[0].description;
+      const country = data.sys.country;
+
+      container.innerHTML = `
+          <div class="weather-box">
+            <h3>${data.name}, ${country}</h3>
+            <p>${temp}°C — ${desc}</p>
+          </div>
+        `;
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = "<p>Could not load weather data. Please check spelling.</p>";
+    }
+  });
+</script>
+</body>
+</html>
+
