@@ -25,7 +25,7 @@ html {
  */
 
 ::-moz-selection {
-  background: #c2f0f0;
+  background: #fafafa;
   text-shadow: none;
 }
 
@@ -187,6 +187,7 @@ button.clicked {
   opacity: 1;
 }
 
+
 footer {
   position: fixed;
   bottom: 0;
@@ -195,11 +196,35 @@ footer {
   font-size: 0.8rem;
   color: #333;
   background-color: #b3d9d9;
+  padding: 12px 0;
+  margin: 0;
+  z-index: 10; /* säkerställ att den ligger ovanpå */
+}
+
+/*footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+  padding: 15px 0;
+  background-color: #FFE4E1;
+  width: 100%;
+}
+
+
+/*
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+  background-color: #FFE4E1;
   padding: 15px 0;
   padding-bottom: 50px;
   margin: 0;
 }
-
+/*
   /* Extends the .visually-hidden class to allow the element
   * to be focusable when navigated to via the keyboard:
   * https://www.drupal.org/node/897638

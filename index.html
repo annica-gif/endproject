@@ -1,6 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Weather App</title>
+
+  <style>
+    /* ----------------- Base ----------------- */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* hela viewport-höjd */
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #d1e0e0;
+    }
+
+    main {
+      flex: 1; /* tar all ledig höjd */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    input, button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 15px;
+    }
+
+    button {
+      background-color: #ffcc99;
+      color: #006699;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00008B;
+      color: #fff;
+    }
+
+    .weather-box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      margin: 20px auto;
+    }
+
+    main img {
+      max-width: 90%;
+      height: auto;
+      margin-top: 20px;
+    }
+
+    /* ----------------- Footer ----------------- */
+    footer {
+      margin-top: auto; /* trycker footer till botten */
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      background-color: #b3d9d9;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<main>
+  <h1>🌤️ What about tomorrow? 🌤️</h1>
+  <p>Type a city and see what the weather is like:</p>
+
+  <input type="text" id="cityInput" placeholder="Enter city name" />
+  <button id="checkWeather">Get weather</button>
+
+  <div id="weatherContainer"></div>
+
+  <img src="img/krabi.jpg" style="height:400px;" alt="Beach in Krabi" />
+</main>
+
+<footer>
+  <p>© 2025 made by @littlemissmilla</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +112,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #adebeb;
+      background: #d1e0e0;
+      font-size: 18px;
       text-align: center;
       padding: 30px;
     }
@@ -40,7 +145,7 @@
 <script>
   const API_KEY = "bf911426b3cfa77b46355221ff33da01";// 🔑 Replace with your OpenWeather API key-->
 
-  document.getElementById("checkWeather").addEventListener("click", async () => {
+<!--  document.getElementById("checkWeather").addEventListener("click", async () => {
     const city = document.getElementById("cityInput").value.trim();
     const container = document.getElementById("weatherContainer");
     if (!city) {
@@ -84,4 +189,4 @@
 
 <script src="js/app.js"></script>
 </body>
-</html>
+</html>-->
