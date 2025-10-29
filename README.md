@@ -73,7 +73,7 @@ Jag använde mig av border-radius till rundade hörn på knapp/frågebox.
 # Learnings
 
 CSS:
-Hade lite problem med footern som inte hamnade ovanpå. Det var något som stökade men fick till det till slut.
+Hade lite problem med footern som låg gömd. Det var något som stökade men fick till det till slut.
 Kanske var det z-index: 10; /* säkerställ att den ligger ovanpå */ eller så fixade det sig när jag rensade upp lite i koden.
 Eftersom vi inte bedöms på css så valde jag att lägga tiden på annat, men det här borde jag egentligen kunna.
 
