@@ -134,7 +134,7 @@ main {
 
 .weather-box {
   background: white;
-  border-radius: 20px; /* ✅ rounded corners */
+  border-radius: 20px;
   padding: 12px;
   width: 280px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -187,7 +187,6 @@ button.clicked {
   opacity: 1;
 }
 
-
 footer {
   position: fixed;
   bottom: 0;
@@ -198,33 +197,9 @@ footer {
   background-color: #b3d9d9;
   padding: 12px 0;
   margin: 0;
-  z-index: 10; /* säkerställ att den ligger ovanpå */
+  z-index: 10;
 }
 
-/*footer {
-  text-align: center;
-  font-size: 0.8rem;
-  color: #555;
-  padding: 15px 0;
-  background-color: #FFE4E1;
-  width: 100%;
-}
-
-
-/*
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #555;
-  background-color: #FFE4E1;
-  padding: 15px 0;
-  padding-bottom: 50px;
-  margin: 0;
-}
-/*
   /* Extends the .visually-hidden class to allow the element
   * to be focusable when navigated to via the keyboard:
   * https://www.drupal.org/node/897638
@@ -350,3 +325,33 @@ footer {
     }
   }
 {}
+/* Gör sidan responsiv (mindre skärmar, mobil, surfplatta) */
+@media (max-width: 600px) {
+  main.content {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  footer {
+    font-size: 0.7rem;
+    padding: 10px 0;
+  }
+}
